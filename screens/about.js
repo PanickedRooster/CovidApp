@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Drawer from './routes/drawer'
 
-
-export default function App() {
+export default function About() {
   return (
-    <Drawer />
+    <View style={styles.container}>
+      <Text>About  Screen</Text>
+    </View>
   );
 }
 
