@@ -1,18 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { globalStyles } from '../styles/global'
-import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Header({ navigation, name }) {
+export default function SecondaryHeader({ navigation, name }) {
     
-    const openMenu = () => {
-        navigation.openDrawer()
+    const back = () => {
+        navigation.goBack()
     }
     
     return(
         <View style={styles.header}>
-            <MaterialIcons name='menu' size={35} onPress={openMenu} style={styles.icon}/>
+            <Ionicons name='md-arrow-back' size={35} onPress={back} style={styles.icon}/>
             <View>
                 <Text style={globalStyles.headerText}>{name}</Text>
             </View>
@@ -27,7 +26,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center', 
-
     },
     icon: {
         color: 'white',

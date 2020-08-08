@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Default() {
+export default function Buisness({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Default Screen</Text>
+      <Text style={{color: 'blue', fontSize: 23}}>{ navigation.getParam("name") }</Text>
     </View>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function CheckIn() {
+export default function ProfileCt() {
   return (
     <View style={styles.container}>
-      <Text>Check In Screen</Text>
+      <Text>Profile Screen</Text>
     </View>
   );
 }

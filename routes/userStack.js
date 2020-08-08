@@ -3,14 +3,15 @@ import { createAppContainer } from 'react-navigation'
 import history from '../screens/history'
 import Header from '../shared/header'
 import React from 'react'
+import user from '../screens/user'
 import globalStyles from '../'
 
 const screens = {
-    History: {
-        screen: history,
+    User: {
+        screen: user,
         navigationOptions: ({ navigation }) => {
             return { 
-                headerTitle: () => <Header navigation={navigation} name={"Your History"}/>,
+                headerTitle: () => <Header navigation={navigation} name={"Profile Info"}/>,
                 headerStyle: { 
                     backgroundColor: "#5e72e4",
                     shadowOpacity: 0,
@@ -21,7 +22,7 @@ const screens = {
     }
 }
 
-const historyStack = createStackNavigator(screens, {
+const userStack = createStackNavigator(screens, {
 });
 
-export default historyStack;
+export default userStack;
