@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator, Button, Dimensions } from 'react-native';
 import Drawer from './routes/drawer';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo'
+import { FlatList } from 'react-native-gesture-handler';
+import SplashScreen from './screens/splashScreen';
 
 
 const getFonts = () =>  Font.loadAsync({
@@ -11,10 +13,11 @@ const getFonts = () =>  Font.loadAsync({
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-
+  
   if(fontsLoaded) {
     return (
-      <Drawer />
+      <SplashScreen/>
+      // <Drawer />
     ) 
   } else {
     return(
@@ -25,6 +28,7 @@ export default function App() {
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

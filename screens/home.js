@@ -44,11 +44,12 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: '1%'
   },
   iconText: {
     fontSize: 49,
     color: '#8898aa',
     fontFamily: "Nucleo",
-    padding: 10,
+    padding: '5%',
   },
 });

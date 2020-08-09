@@ -3,7 +3,7 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { StyleSheet, ScrollView, SafeAreaView, Text, Dimensions, Image, View} from 'react-native'
 import userStack from './userStack'
-import historyStack from './historyStack';
+import supportStack from './supportStack';
 import aboutStack from './aboutStack';
 import homeStack from './homeStack';
 
@@ -24,10 +24,10 @@ const rootDrawerNavigator = createDrawerNavigator({
         screen: homeStack,
     },
     ABOUT: {
-        screen: historyStack,
+        screen: aboutStack,
     },
     SUPPORT: {
-        screen: aboutStack,
+        screen: supportStack,
     },
     LOGOUT: {
         screen: userStack,

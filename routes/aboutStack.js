@@ -10,7 +10,7 @@ const screens = {
         screen: about,
         navigationOptions: ({ navigation }) => {
             return { 
-                headerTitle: () => <Header navigation={navigation} name={"ABOUT"}/>,
+                headerTitle: () => <Header navigation={navigation} name={"About"}/>,
                 headerStyle: {
                     backgroundColor: "#5e72e4",
                     shadowOpacity: 0,

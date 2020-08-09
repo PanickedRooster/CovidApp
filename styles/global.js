@@ -8,7 +8,8 @@ export const globalStyles = StyleSheet.create({
       justifyContent: 'center',
     },
     headerText: {
-        fontSize: 30,
+        fontSize: 35,
+        paddingBottom: '3%',
         color: 'white',
         fontFamily: 'Nucleo',
     },
@@ -27,7 +28,6 @@ export const globalStyles = StyleSheet.create({
         marginHorizontal: 50, 
         marginVertical: 10,
         alignItems: 'center',
-        // alignContent: 'center'
     },
     cardContent: {
       marginHorizontal: 18, 

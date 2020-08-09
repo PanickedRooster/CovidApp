@@ -20,9 +20,7 @@ export default function Search({ navigation }) {
       <View style={styles.searchBar}>
         <TextInput style={styles.search} placeholder="Search For Buisness"/>
         <TouchableOpacity style={styles.qrCode} activeOpacity={1}>
-            <View style={styles.cardContent}>
-                <Text style={{color: '#8898aa', fontSize: 25, textAlign: 'center'}}>QR</Text>
-            </View>
+          <Text style={{color: '#8898aa', fontSize: 25, textAlign: 'center'}}>QR</Text>
         </TouchableOpacity>
       </View>
       <Entypo name='dots-three-horizontal' size={40} color='white'/>

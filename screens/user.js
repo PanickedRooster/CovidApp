@@ -1,26 +1,44 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, Button, 
   TouchableWithoutFeedback, Keyboard, ActivityIndicator } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { Formik } from 'formik';
 import { Entypo } from '@expo/vector-icons';
+import * as yup from 'yup';
 
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+const ProfileSchema = yup.object({
+  address: yup.string()
+    .required(),
+  age: yup.string()
+    .required()
+    .test('is-age-valid', 'Age must be between 1-99', (val) => {
+      return parseInt(val) < 99 && parseInt(val) > 1;
+    }),
+  phone: yup.string()
+    .matches(phoneRegExp, 'Phone number is not valid'),
+  email: yup.string()
+    .required()
+    .email()
+})
 
 
 export default function User() {
   const [user, setUser] = useState({
-    name: "Oliver Stack", age: '19', email: 'oli@hotmail.com', phone: '0431323443', address: 'U 5 55 Lang Street', post: '4329'
+    name: "Oliver Stack", age: '19', email: 'oli@hotmail.com', phone: '0418661264', address: 'U 5 55 Lang Street', post: '4329'
   });
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.profileTop}>
-          <Image source={require('../assets/Rooster.jpg')} style={{height: 200, width: 200, borderRadius: 200/2, borderColor: 'grey', borderWidth: 1}}/>
+          <Image source={require('../assets/Rooster.jpg')} style={{height: 200, width: 200, borderRadius: 200/2, borderColor: 'white', borderWidth: 4}}/>
           <Text style={styles.userName}>{user.name}</Text>
-          <Entypo name='dots-three-horizontal' size={40} color='#6f33ff'/>
+          <Entypo name='dots-three-horizontal' size={40} color='#eee'/>
         </View>
           <Formik
-            initialValues={{ address: user.address, age: user.age, phone: user.phone, email: user.email }}
+            initialValues={{ address: '', age: '', phone: '', email:'' }}
+            validationSchema={ProfileSchema}
             onSubmit={(values, actions) => {
               actions.resetForm()
               console.log(values)
@@ -35,6 +53,7 @@ export default function User() {
                     multiline
                     style={styles.search}
                     placeholder={user.address}
+                    placeholderTextColor='#8898aa'
                     onChangeText={formikProps.handleChange('address')}
                     value={formikProps.address}
                   />
@@ -44,6 +63,7 @@ export default function User() {
                   <TextInput 
                     style={styles.search}
                     placeholder={user.age}
+                    placeholderTextColor='#8898aa'
                     onChangeText={formikProps.handleChange('age')}
                     value={formikProps.age}
                     keyboardType="number-pad"
@@ -55,6 +75,7 @@ export default function User() {
                     style={styles.search}
                     keyboardType="number-pad"
                     placeholder={user.phone}
+                    placeholderTextColor='#8898aa'
                     onChangeText={formikProps.handleChange('phone')}
                     value={formikProps.phone}
                   />
@@ -64,12 +85,17 @@ export default function User() {
                   <TextInput 
                     style={styles.search}
                     placeholder={user.email}
+                    placeholderTextColor='#8898aa'
                     onChangeText={formikProps.handleChange('email')}
                     value={formikProps.email}
                     keyboardType="email-address"
                   />
                 </View>
-                <Button title="Update" color="maroon" onPress={formikProps.handleSubmit} borderRadius={50}/>
+                <View style={styles.submitContainer}>
+                  <TouchableOpacity style={styles.submitButton} activeOpacity={0.8} onPress={formikProps.handleSubmit}>
+                    <Text style={{color: '#8898aa', fontSize: 25, textAlign: 'center'}}>Update</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             )}
           </Formik>
@@ -81,33 +107,43 @@ export default function User() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
+    backgroundColor: '#5e72e4',
   },
   userName: {
     fontWeight: '600',
     fontSize: 40,
-    color: '#59155a',
+    color: 'white',
+  },
+  submitButton: {
+    borderRadius: 12, 
+    elevation: 2, 
+    shadowOffset: { width: 1, height: 1},
+    shadowColor: '#333',
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    paddingVertical: "5%",
+    borderRadius: 10,
+    backgroundColor: 'white',
+  },
+  submitContainer: {
+    paddingTop: "10%"
   },
   search: {
     fontSize: 30,
-    width: 400,
+    width: "100%",
     textAlign: 'center',
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: 'white',
+    borderColor: 'white',
     borderRadius: 10,
   }, 
   headers: {
     textAlign: "center", 
     fontSize: 30,
-    color: 'grey',
+    color: '#eee',
   }, 
   profileTop: {
     paddingTop: 20,
     alignItems: 'center'
-  },
-  textBox: {
-    // paddingBottom: 20,
   },
   profileBottom: {
     flex: 1,

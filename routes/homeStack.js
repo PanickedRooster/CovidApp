@@ -12,7 +12,7 @@ import search from '../screens/search'
 import { Image } from 'react-native';
 
 const screens = {
-    Home: {
+    Profile: {
         screen: home,
         navigationOptions: ({ navigation }) => {
             return {  
@@ -71,7 +71,7 @@ const screens = {
             }
         },
     },
-    Profile: {
+    User: {
         screen: user,
         navigationOptions: ({ navigation }) => {
             return { 

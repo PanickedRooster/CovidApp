@@ -1,16 +1,15 @@
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
-import history from '../screens/history'
+import support from '../screens/support'
 import Header from '../shared/header'
 import React from 'react'
-import globalStyles from '../'
 
 const screens = {
-    History: {
-        screen: history,
+    Support: {
+        screen: support,
         navigationOptions: ({ navigation }) => {
             return { 
-                headerTitle: () => <Header navigation={navigation} name={"Your History"}/>,
+                headerTitle: () => <Header navigation={navigation} name={"Support"}/>,
                 headerStyle: { 
                     backgroundColor: "#5e72e4",
                     shadowOpacity: 0,

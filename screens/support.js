@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function ProfileCt() {
+export default function Support() {
   return (
     <View style={styles.container}>
-      <Text>Profile Screen</Text>
+      <Text>Support Screen</Text>
     </View>
   );
 }
